@@ -4,6 +4,7 @@ import {
 } from "@material-ui/icons";
 import { useState } from "react";
 import styles from "./CountriesTable.module.css";
+import Link from "next/Link";
 
 const orderBy = (countries, value, direction) => {
   if (direction === "asc") {
@@ -70,10 +71,12 @@ const CountriesTable = ({ countries }) => {
         </button>
       </div>
       {orderedCountries.map((country, index) => (
-        <div className={styles.row} key={index}>
-          <div className={styles.name}>{country.name}</div>
-          <div className={styles.population}>{country.population}</div>
-        </div>
+        <Link href={`/country/${country.name}`}>
+          <div className={styles.row} key={index}>
+            <div className={styles.name}>{country.name}</div>
+            <div className={styles.population}>{country.population}</div>
+          </div>
+        </Link>
       ))}
       {console.log(countries)}
     </div>
