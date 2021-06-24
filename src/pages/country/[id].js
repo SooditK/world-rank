@@ -10,9 +10,7 @@ const Country = ({ country }) => {
 export default Country;
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await fetch(
-    `https://restcountries.eu/rest/v2/name/${params.name}`
-  );
+  const res = await fetch(`https://restcountries.eu/rest/v2/name/${params.id}`);
   const country = await res.json();
   return {
     props: {
